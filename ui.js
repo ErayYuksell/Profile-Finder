@@ -41,6 +41,10 @@ class UI{
                              company : ${profile.company.name}
                             </li>
                         </ul>
+                        <h4 class="mt-4">Todo list</h4>
+                        <ul id="todo" class="list-group">
+
+                        <ul>
                     </div>
                 </div>
 
@@ -53,6 +57,34 @@ class UI{
 
     showAlert(text){
         this.alert.innerHTML =`${text} is not found.`;
+    }
+
+    showTodo(todo){
+        
+        let html="";
+
+
+        todo.forEach(item => {
+            
+            if(item.completed){
+                html+=`
+                    <li class="list-group-item bg-success">
+                        ${item.title}
+                    </li>    
+                `;
+            }else{
+                html+=`
+                <li class="list-group-item bg-secondary">
+                    ${item.title}
+                </li>    
+            `;
+            }
+
+        });
+
+
+        this.profileContainer.querySelector('#todo').innerHTML = html;
+
     }
 
     clear(){
